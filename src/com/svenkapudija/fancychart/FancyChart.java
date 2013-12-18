@@ -11,6 +11,7 @@ import android.graphics.Path;
 import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -69,10 +70,48 @@ public class FancyChart extends View {
 	public ChartData getLastChartData() {
 		return chartData.get(chartData.size()-1);
 	}
-	
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        int mViewWidth = measureWidth(widthMeasureSpec);
+        int mViewHeight = measureHeight(heightMeasureSpec);
+        Log.d("zqt", "onMeasure:" + mViewWidth + "-" + mViewHeight);
+        setMeasuredDimension(mViewWidth, mViewHeight);
+    }
+
+    private int measureWidth(int measureSpec) {
+        Log.d("zqt", "measureWidth:" + MeasureSpec.getMode(measureSpec));
+        return getMeasurement(measureSpec);
+    }
+
+    private int measureHeight(int measureSpec) {
+        Log.d("zqt", "measureHeight:" + MeasureSpec.getMode(measureSpec));
+        return getMeasurement(measureSpec);
+    }
+
+    private int getMeasurement(int measureSpec) {
+        int specSize = MeasureSpec.getSize(measureSpec);
+        int measurement;
+        Log.d("zqt", "getMeasurement:" + specSize);
+        switch (MeasureSpec.getMode(measureSpec)) {
+            case MeasureSpec.EXACTLY:// fill_parent
+                measurement = specSize;
+                break;
+            case MeasureSpec.AT_MOST:// wrap_content
+                measurement = specSize;
+                break;
+            default:// HorizontalScrollView下的 wrap_content
+                measurement = 2000;
+                break;
+        }
+        return measurement;
+    }
 	@SuppressLint("DrawAllocation")
 	@Override
 	protected void onDraw(Canvas canvas) {
+        Log.d("zqt", "getWidth():" + getWidth());
+        Log.d("zqt", "canvas.getHeight():" + canvas.getHeight());
+        Log.d("zqt", "getHeight():" + getHeight());
 		drawVerticalLinesAndLegend(canvas);
 		drawHorizontalLinesAndLegend(canvas);
 		

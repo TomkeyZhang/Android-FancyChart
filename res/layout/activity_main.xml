@@ -2,14 +2,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#efefeb"
+    android:background="#333333"
     android:padding="20dp"
     tools:context=".demo.MainActivity" >
 
-    <com.svenkapudija.fancychart.FancyChart
-        android:id="@+id/chart"
+    <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-    </com.svenkapudija.fancychart.FancyChart>
+        android:layout_height="match_parent"
+        android:layout_margin="22dp"
+        android:scrollbars="none" >
+
+        <com.svenkapudija.fancychart.FancyChart
+            android:id="@+id/chart"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="#efefeb" >
+        </com.svenkapudija.fancychart.FancyChart>
+    </HorizontalScrollView>
 
 </RelativeLayout>
