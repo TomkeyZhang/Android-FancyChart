@@ -1,23 +1,31 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#333333"
-    android:padding="20dp"
-    tools:context=".demo.MainActivity" >
+    android:background="@android:color/darker_gray"
+    android:fillViewport="true">
 
-    <HorizontalScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="22dp"
-        android:scrollbars="none" >
+        android:layout_height="wrap_content"
+        android:background="#efefeb" android:orientation="horizontal">
 
-        <com.svenkapudija.fancychart.FancyChart
-            android:id="@+id/chart"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="#efefeb" >
-        </com.svenkapudija.fancychart.FancyChart>
-    </HorizontalScrollView>
+        
 
-</RelativeLayout>
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scrollbars="none" >
+
+            <com.anjuke.library.uicomponent.chart.linechart.CommunityLineChart
+                android:id="@+id/chart"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+        </HorizontalScrollView>
+        <com.anjuke.library.uicomponent.chart.linechart.VerticalLegend
+            android:id="@+id/chart_vertical"
+            android:layout_width="30dp"
+            android:layout_height="1500dp"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+</ScrollView>

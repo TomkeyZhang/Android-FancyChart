@@ -1,4 +1,4 @@
-package com.svenkapudija.fancychart.data;
+package com.anjuke.library.uicomponent.chart;
 
 public class AxisValue implements Comparable<AxisValue> {
 	
